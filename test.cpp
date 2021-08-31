@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "/home/gildson/Área de Trabalho/2 prova/atividade 2/arquivo.h"
+#include "./arquivo.h"
 #include "gtest/gtest.h"
 
 using namespace std;
