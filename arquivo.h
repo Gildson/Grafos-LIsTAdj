@@ -9,7 +9,7 @@ class GrafoListaAdj {
 private:
     vector<string> vertices;
 
-    //first é o indice do vertice, second é o peso (caso o grafo seja ponderado)
+    //first Ã© o indice do vertice, second Ã© o peso (caso o grafo seja ponderado)
     vector<vector<pair<int, int>>> arestas;
 
     /**
@@ -32,21 +32,21 @@ public:
     /**
     * Lembrem-se:
     *       1) nao podemos inserir vertices com mesmo rotulo
-    *       2) toda vez que inserirmos um novo vértice, precisaremos
-    *          inserir um vetor para representar as conexões daquele
-    *          vértice na lista de adjacências
+    *       2) toda vez que inserirmos um novo vÃ©rtice, precisaremos
+    *          inserir um vetor para representar as conexÃµes daquele
+    *          vÃ©rtice na lista de adjacÃªncias
     **/
     void inserirVertice(string rotuloVertice) {
         //IMPLEMENTAR
-        if(this->obterIndiceVertice(rotuloVertice) != -1){
-        	this->vertices.push_back(rotuloVertice);
-        	this->arestas.push_back(vector<pair<int, int>>());
+        if(obterIndiceVertice(rotuloVertice) != -1){
+        	vertices.push_back(rotuloVertice);
+        	arestas.push_back(vector<pair<int, int>>());
         }
     }
 
     /**
-    * Sempre que o grafo for não ponderado, adicionaremos o peso 1,
-    * por conveniência.
+    * Sempre que o grafo for nÃ£o ponderado, adicionaremos o peso 1,
+    * por conveniÃªncia.
     **/
     void inserirArestaDirecionada(string rotuloVOrigem, string rotuloVDestino) {
         inserirArestaDirecionada(rotuloVOrigem, rotuloVDestino, 1);
@@ -68,30 +68,30 @@ public:
     **/
     void inserirArestaDirecionada(string rotuloVOrigem, string rotuloVDestino, int peso) {
         //IMPLEMENTAR
-        int Origem = this->obterIndiceVertice(rotuloVOrigem);
-        int Destino = this->obterIndiceVertice(rotuloVDestino);
+        int Origem = obterIndiceVertice(rotuloVOrigem);
+        int Destino = obterIndiceVertice(rotuloVDestino);
 
         if (Origem != -1 && Destino != -1) {
             return;
         }
         else {
-            this->arestas[Origem].push_back(pair<int, int>(Destino, peso));
+            arestas[Origem].push_back(pair<int, int>(Destino, peso));
         }
     }
 
     /**
-    * Verifica se vértice rotuloVOrigem e vértice rotuloVDestino são
+    * Verifica se vÃ©rtice rotuloVOrigem e vÃ©rtice rotuloVDestino sÃ£o
     * conectados (vizinhos).
     **/
     bool saoConectados(string rotuloVOrigem, string rotuloVDestino) {
         //IMPLEMENTAR
 
-        int Origem = this->obterIndiceVertice(rotuloVOrigem);
-        int Destino = this->obterIndiceVertice(rotuloVDestino);
+        int Origem = obterIndiceVertice(rotuloVOrigem);
+        int Destino = obterIndiceVertice(rotuloVDestino);
 	
 	if(Origem == -1 || Destino == -1) return false;
 	 
-         for (pair<int, int> vec : this->arestas[Origem])
+         for (pair<int, int> vec : arestas[Origem])
             if (vec.first == Destino) return true;
             else return false;
     }
